@@ -1,0 +1,2 @@
+//Load the DateTime, convert it to universal time, then format it into the acceptable string format to write back to SFDC
+Convert.ToDateTime(GetVariableValue("YOURVARIABLE")).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss");
