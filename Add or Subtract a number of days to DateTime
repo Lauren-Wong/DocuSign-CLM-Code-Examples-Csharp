@@ -1,0 +1,2 @@
+//Get the variable containing your date/time, parse it, and add or subtract days indicated (by indicating a positive or negative number)
+DateTime.Parse(GetVariableValue("YOUR_DATE_VARIABLE")).AddDays(10)
