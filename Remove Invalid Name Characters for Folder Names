@@ -1,0 +1,23 @@
+//Create a variable called 'folder' and load it with the name you want to sanitize
+var folder = GetVariableValue("YOUR_WF_VARIABLE").ToString();
+ 
+//Replace the indicated special characters with an underscore
+folder = folder.Replace("#","_");
+folder = folder.Replace("&","_");
+folder = folder.Replace("*","_");
+folder = folder.Replace("|","_");
+folder = folder.Replace("\\","_");
+folder = folder.Replace(":","_");
+folder = folder.Replace("\"","_");
+folder = folder.Replace("?","_");
+folder = folder.Replace("<","_");
+folder = folder.Replace(">","_");
+folder = folder.Replace("/","_");
+folder = folder.Replace("\t", " ");
+folder = folder.Trim();
+  
+//If it ends in a period, remove it
+if (folder.EndsWith(".")){  
+folder = folder.TrimEnd(new System.Char [] {'.'});
+}
+return folder;
