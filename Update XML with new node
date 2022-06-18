@@ -5,16 +5,16 @@ System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
 string xmlDoc = "";
  
 //This loads your string variable with the string representation of the XML you want to load by identifying the name of the XML variable from workflow, and the node (with children) at which you'd like to start
-xmlDoc = _context.XmlVariables["VAR_Initial_XML"].GetXmlNode("//Household_Contacts").OuterXml;
+xmlDoc = _context.XmlVariables["YOUR_WF_XML_VAR"].GetXmlNode("//NODE_NAME").OuterXml;
  
 //This loads your 'doc' variable with the data we just pulled from the workflow variable (more specifically, it takes any string representation of XML and loads it into XML variable format)
 doc.LoadXml(xmlDoc);
  
 //this creates a new variable called 'parentElem' and loads it with a newly created element called 'NEW_NODE_NAME' (you can dynamically load this with another workflow variable).
-System.Xml.XmlElement parentElem = doc.CreateElement("Household_Status");
+System.Xml.XmlElement parentElem = doc.CreateElement("NEW_NODE_NAME");
  
 //This takes the new node just created and loads it with a value
- parentElem.InnerText = "Active"; 
+ parentElem.InnerText = _context.Variables["NEW_VALUE"].Value.ToString(); 
  
 //This appends your 'doc' xml with the newly created node and its value.
 doc.DocumentElement.AppendChild(parentElem);
