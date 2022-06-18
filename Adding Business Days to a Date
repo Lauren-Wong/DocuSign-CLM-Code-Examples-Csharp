@@ -1,0 +1,15 @@
+//Create a new variable called 'current', and set it to the system dateTime for today
+var current = System.DateTime.Today;
+ 
+//Create a variable called 'daysToAdd' and load it with the number from your workflow variable
+var daysToAdd = Int32.Parse(GetVariableValue("YOUR_VARIABLE").ToString());
+ 
+//Add days until the number of indicated days is reached   
+for (var i = 0; i < daysToAdd; i++) {
+  if (current.DayOfWeek != DayOfWeek.Friday) {
+    current = current.AddDays(1);
+  } else {
+    current = current.AddDays(3);
+  }
+}
+return current;
