@@ -1,0 +1,26 @@
+//This creates a new variable called "doc" within the expression.
+System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+//This sets a new string variable 'xmlDoc' to null and just initializes it
+string xmlDoc = "";
+ 
+//This loads your string variable with the string representation of the XML you want to load by identifying the name of the XML variable from workflow, and the node (with children) at which you'd like to start
+xmlDoc = _context.XmlVariables["YOUR_WF_XML_VAR"].GetXmlNode("//NODE_NAME").OuterXml;
+ 
+//This takes that empty 'doc' variable, which is an xml variable, and loads it with the xml we just loaded as a string
+doc.LoadXml(xmlDoc);
+ 
+//This creates a new variable called 'root' and loads it with whatever the root is of the variable called 'doc'
+System.Xml.XmlElement root = doc.DocumentElement;
+ 
+//This creates a new variable called 'node' and loads it with the specified node, in context of the 'root'
+System.Xml.XmlNode node = root.SelectSingleNode("//NODE_TO_LOAD");
+ 
+//From that node, load the text or value indicated in ANOTHER wf variable
+node.InnerText = _context.Variables["WF_STRING_TO_LOAD"].Value.ToString();
+ 
+//Another way of doing the same thing, but with an example of a node being loaded, and the text to be inserted is hard coded instead of a WF variable
+System.Xml.XmlNode node1 = root.SelectSingleNode("//CustomFormFields/ApplicantEmail");
+node1.InnerText = "Text value";
+ 
+//This returns the new XML into the variable for which this expression is being written
+return doc.OuterXml;
