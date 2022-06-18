@@ -1,0 +1,8 @@
+//This creates a new variable called "doc" within the expression.
+System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+ 
+//This loads your variable with the XML you want to load by identifying the name of the XML variable from workflow, and selecting all nodes (with children) via the xpath expression "/*"
+doc = _context.XmlVariables["YOUR_WF_XML_VAR"].GetXmlNode("/*").OuterXml;
+ 
+//This returns the new XML into the variable for which this expression is being written
+return doc;
