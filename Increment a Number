@@ -1,0 +1,2 @@
+//Get the variable holding your string representation of a number, convert it to an integer, and add 1
+Convert.ToInt32(GetVariableValue("YOUR_VARIABLE")) + 1
