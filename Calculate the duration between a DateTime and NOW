@@ -1,0 +1,2 @@
+//Get the variable containing your date/time, parse it, and get difference between then and now
+DateTime.Now.Subtract(DateTime.Parse(GetVariableValue("[YOUR VARIABLE]")))
