@@ -1,0 +1,8 @@
+//Load the workflow variable containing full comments into a variable called 'comment'
+var comment = GetVariableValue("^COMMENT_VARIABLE");
+ 
+//Load everything after 'with comment: '
+comment = comment.Split(new string[]{" on ", "with comment: "}, StringSplitOptions.None)[2];
+ 
+//return the result
+return comment;
