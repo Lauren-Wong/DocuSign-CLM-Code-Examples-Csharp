@@ -1,0 +1,12 @@
+//Create a new variable called 'targetVar' and load it with your Workflow string data
+var targetVar = GetVariableValue("YOUR_VARIABLE");
+ 
+//Evaluate if it ends with a period (replace period with whichever other character you might want to remove, if this is conditional)
+if (targetVar.EndsWith(".")){
+ 
+//If the evaluation it 'true', return the string without the last chatracter. You can change 1 to # of characters you're searching for if you want to remove more
+  targetVar = targetVar.Remove(targetVar.Length - 1);
+ 
+//If false, just return the vaiable as is.
+}
+return targetVar;
